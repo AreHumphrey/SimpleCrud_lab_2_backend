@@ -41,22 +41,23 @@ public class Database {
         System.out.println("Пользователь не найден");
     }
 
-    public static void updateUser(User user) {
-        for (User existingUser : dataBase) {
-            if (existingUser.getLogin().equals(user.getLogin())) {
-                existingUser.setName(user.getName());
-                existingUser.setPassword(user.getPassword());
+    public static void updateUser(User updatedUser) {
+        for (User user : dataBase) {
+            if (user.getLogin().equals(updatedUser.getLogin())) {
+                user.setName(updatedUser.getName());
+                user.setPassword(updatedUser.getPassword());
+                System.out.println("Пользователь успешно обновлен");
+                return;
             }
         }
-        System.out.println("Пользователь не найден");
+        System.out.println("Пользователь не найден для обновления");
     }
+
 
     static class UserAlreadyExists extends Exception {
         public void errorMessage() {
             System.out.println("Пользователь с такими данными уже сужествует");
         }
     }
-
-    ;
 
 }
